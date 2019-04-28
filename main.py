@@ -17,7 +17,8 @@ async def on_ready():
     print('------')
     await bot.change_presence(activity=discord.Game(name='The Black Dread'))
 
-''''# administrative group
+    
+# administrative group
 @bot.group(name='su')
 description = "Group of privileged commands"
 async def su(ctx):
@@ -28,14 +29,14 @@ async def su(ctx):
 # ban
 
 @su.command(name='ban')
-@commands.has_role(id)
+@commands.has_role(id) # assign an id for restricted use otherwise everyone will be able to use it
 async def ban(ctx, members: commands.Greedy[discord.Member],
               delete_days: typing.Optional[int] = 0, *,
               reason: str):
     for member in members:
         await member.ban(delete_message_days=delete_days, reason=reason)
     else:
-        await ctx.send("You don't have permission to use this command.")'''
+        await ctx.send("You don't have permission to use this command.")
 
 # Roles
 @bot.group(name='roles')
@@ -48,14 +49,14 @@ async def roles(ctx):
 async def add_py(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)
+    role = get(guild.roles, id=id) # replace id with the id of the discord role being assigned
     if role in member.roles:
         await ctx.send('Silly human, you already have that role...')
     else:
         await ctx.send("Congratulations, you now have the Python role!")
         await member.add_roles(role)
         for member in guild.members:
-            if role in member.roles:
+            if role in member.roles:  #sends dm to member being assigned the role
                 await ctx.author.send("Congratulation, you now have the Python role!")
                 break
 
@@ -63,14 +64,14 @@ async def add_py(ctx):
 async def remove_py(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)
+    role = get(guild.roles, id=id) # replace id with the id of the discord role being removed
     if role not in member.roles:
         await ctx.send('Silly human, you don\'t have that role...')
     else:
-        await ctx.send("Congratulation, you now have been removed from the Python role!")
+        await ctx.send("Congratulation, you now have been removed from the Python role!") 
         await member.remove_roles(role)
         for member in guild.members:
-            if role in member.roles:
+            if role in member.roles: #sends dm to member being assigned the role
                 await ctx.author.send("Congratulation, you now have been removed from the Python role!")
                 break
 
@@ -78,14 +79,14 @@ roles.command(name='-a c++')
 async def add_c_plus(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)
+    role = get(guild.roles, id=id) # replace id with the id of the discord role being assigned
     if role in member.roles:
         await ctx.send('Silly human, you already have that role...')
     else:
         await ctx.send("Congratulations, you now have the C++ role!")
         await member.add_roles(role)
         for member in guild.members:
-            if role in member.roles:
+            if role in member.roles:  #sends dm to member being assigned the role
                 await ctx.author.send("Congratulation, you now have the C++ role!")
                 break
 
@@ -93,14 +94,14 @@ async def add_c_plus(ctx):
 async def remove_c_plus(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)
+    role = get(guild.roles, id=id) # replace id with the id of the discord role being removed
     if role not in member.roles:
         await ctx.send('Silly human, you don\'t have that role...')
     else:
         await ctx.send("Congratulation, you now have been removed from the C++ role!")
         await member.remove_roles(role)
         for member in guild.members:
-            if role in member.roles:
+            if role in member.roles:  #sends dm to member being assigned the role
                 await ctx.author.send("Congratulation, you now have been removed from the C++ role!")
                 break
 
@@ -108,14 +109,14 @@ roles.command(name='-a java')
 async def add_java(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)
+    role = get(guild.roles, id=id) # replace id with the id of the discord role being assigned
     if role in member.roles:
         await ctx.send('Silly human, you already have that role...')
     else:
         await ctx.send("Congratulations, you now have the Java role!")
         await member.add_roles(role)
         for member in guild.members:
-            if role in member.roles:
+            if role in member.roles:  #sends dm to member being assigned the role
                 await ctx.author.send("Congratulation, you now have the Java role!")
                 break
 
@@ -123,14 +124,14 @@ async def add_java(ctx):
 async def remove_java(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)
+    role = get(guild.roles, id=id) # replace id with the id of the discord role being removed
     if role not in member.roles:
         await ctx.send('Silly human, you don\'t have that role...')
     else:
         await ctx.send("Congratulation, you now have been removed from the Java role!")
         await member.remove_roles(role)
         for member in guild.members:
-            if role in member.roles:
+            if role in member.roles:  #sends dm to member being assigned the role
                 await ctx.author.send("Congratulation, you now have been removed from the Java role!")
                 break
 
@@ -138,14 +139,14 @@ roles.command(name='-a web')
 async def add_web(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)
+    role = get(guild.roles, id=id) # replace id with the id of the discord role being assigned
     if role in member.roles:
         await ctx.send('Silly human, you already have that role...')
     else:
         await ctx.send("Congratulations, you now have the Html/CSS/JS role!")
         await member.add_roles(role)
         for member in guild.members:
-            if role in member.roles:
+            if role in member.roles:  #sends dm to member being assigned the role
                 await ctx.author.send("Congratulation, you now have the Html/CSS/JS role!")
                 break
 
@@ -153,14 +154,14 @@ async def add_web(ctx):
 async def remove_web(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)
+    role = get(guild.roles, id=id) # replace id with the id of the discord role being removed
     if role not in member.roles:
         await ctx.send('Silly human, you don\'t have that role...')
     else:
         await ctx.send("Congratulation, you now have been removed from the Html/CSS/JS role!")
         await member.remove_roles(role)
         for member in guild.members:
-            if role in member.roles:
+            if role in member.roles:  #sends dm to member being assigned the role
                 await ctx.author.send("Congratulation, you now have been removed from the Html/CSS/JS role!")
                 break
 
