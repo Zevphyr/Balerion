@@ -45,7 +45,7 @@ async def roles(ctx):
         await ctx.send('Invalid role command passed. Please try again...')
 
 
-@roles.command(name='-a python')
+@roles.command(name='a-python')
 async def add_py(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
@@ -60,7 +60,7 @@ async def add_py(ctx):
                 await ctx.author.send("Congratulation, you now have the Python role!")
                 break
 
-@roles.command(name='-r python')
+@roles.command(name='r-python')
 async def remove_py(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
@@ -75,7 +75,7 @@ async def remove_py(ctx):
                 await ctx.author.send("Congratulation, you now have been removed from the Python role!")
                 break
 
-roles.command(name='-a c++')
+roles.command(name='a-c++')
 async def add_c_plus(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
@@ -90,7 +90,7 @@ async def add_c_plus(ctx):
                 await ctx.author.send("Congratulation, you now have the C++ role!")
                 break
 
-@roles.command(name='-r c++')
+@roles.command(name='r-c++')
 async def remove_c_plus(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
@@ -105,7 +105,7 @@ async def remove_c_plus(ctx):
                 await ctx.author.send("Congratulation, you now have been removed from the C++ role!")
                 break
 
-roles.command(name='-a java')
+roles.command(name='a-java')
 async def add_java(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
@@ -120,7 +120,7 @@ async def add_java(ctx):
                 await ctx.author.send("Congratulation, you now have the Java role!")
                 break
 
-@roles.command(name='-r java')
+@roles.command(name='r-java')
 async def remove_java(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
@@ -135,7 +135,7 @@ async def remove_java(ctx):
                 await ctx.author.send("Congratulation, you now have been removed from the Java role!")
                 break
 
-roles.command(name='-a web')
+roles.command(name='a-web')
 async def add_web(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
@@ -150,7 +150,7 @@ async def add_web(ctx):
                 await ctx.author.send("Congratulation, you now have the Html/CSS/JS role!")
                 break
 
-@roles.command(name='-r web')
+@roles.command(name='r-web')
 async def remove_web(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
