@@ -17,6 +17,13 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     await bot.change_presence(activity=discord.Game(name='The Black Dread'))
+    
+    
+# Globals
+def role_channel():  # Creates own decorator
+    def predicate(channel):
+        channel = bot.get_channel(12324234183172)  # Retrieves channel id from guild
+    return commands.check(predicate)
 
 # administrative group
 @bot.group(name='su', brief='This is for administrative commands', description='These commands are unable to \
@@ -26,10 +33,10 @@ async def su(ctx):
     if ctx.invoked_subcommand is None:
         await ctx.send('Invalid su command passed...')
 
-#
+
 @su.command(name='purge', brief='Purges old messages', description='purges up to 100 messaged made within the \
                                                                                                 last 14 days')
-async def clean(ctx, limit: 100):
+async def clean(ctx, limit: int):
     await ctx.channel.purge(limit=limit, bulk=True)
     await ctx.send('Cleared by {}'.format(ctx.author.mention))
     await ctx.message.delete()
@@ -53,13 +60,34 @@ async def ban(ctx, members: commands.Greedy[discord.Member],
         await member.ban(delete_message_days=delete_days, reason=reason)
     else:
         await ctx.send("You don't have permission to use this command.")
+      
+      
+# Kick
+@su.command(name='kick', brief='Kicks users', description=' Requires 2 args minimum; The command can Kick multiple \
+    users at once. Usage is as follows /su ban @user1, @user2[optional], @user3[and so on], [reason for kick], \
+     delete_days[optional]')
+async def kick(ctx, members: commands.Greedy[discord.Member],
+              delete_days: typing.Optional[int] = 0, *,
+              reason: str):
+    for member in members:
+        await member.kick(delete_message_days=delete_days, reason=reason)
+    else:
+        await ctx.send("You don't have permission to use this command.")
+      
 
 # Roles
 @bot.group(name='roles', brief='This is for role commands', description='Individuals may assign any of the listed \
                                 roles.')
+@role_channel()
 async def roles(ctx):
     if ctx.invoked_subcommand is None:
         await ctx.send('Invalid role command passed. Please try again...')
+    
+    
+@roles.error  # Error handling
+async def clear_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):  # role_channel
+        await ctx.send("You cant do that in this channel!")
 
 
 @roles.command(name='a-python', brief='Assigns the Python role')
