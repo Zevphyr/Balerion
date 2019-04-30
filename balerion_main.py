@@ -22,7 +22,7 @@ async def on_ready():
 # Globals
 def role_channel():  # Creates own decorator
     def predicate(channel):
-        channel = bot.get_channel(12324234183172)  # Retrieves channel id from guild
+        channel = bot.get_channel(id)  # Retrieves channel id from guild
     return commands.check(predicate)
 
 # administrative group
