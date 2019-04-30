@@ -17,13 +17,14 @@ async def on_ready():
     print(bot.user.id)
     print('------')
     await bot.change_presence(activity=discord.Game(name='The Black Dread'))
-    
-    
+
+
 # Globals
 def role_channel():  # Creates own decorator
     def predicate(channel):
-        channel = bot.get_channel(id)  # Retrieves channel id from guild
+        channel = bot.get_channel(12324234183172)  # Retrieves channel id from guild
     return commands.check(predicate)
+
 
 # administrative group
 @bot.group(name='su', brief='This is for administrative commands', description='These commands are unable to \
@@ -33,7 +34,7 @@ async def su(ctx):
     if ctx.invoked_subcommand is None:
         await ctx.send('Invalid su command passed...')
 
-
+#
 @su.command(name='purge', brief='Purges old messages', description='purges up to 100 messaged made within the \
                                                                                                 last 14 days')
 async def clean(ctx, limit: int):
@@ -42,9 +43,9 @@ async def clean(ctx, limit: int):
     await ctx.message.delete()
 
 
-@su.error # Error event
+@su.error
 async def clear_error(ctx, error):
-    if isinstance(error, commands.MissingPermissions): # Missing permissions
+    if isinstance(error, commands.MissingPermissions):
         await ctx.send("You cant do that!")
 
 
@@ -60,8 +61,8 @@ async def ban(ctx, members: commands.Greedy[discord.Member],
         await member.ban(delete_message_days=delete_days, reason=reason)
     else:
         await ctx.send("You don't have permission to use this command.")
-      
-      
+
+
 # Kick
 @su.command(name='kick', brief='Kicks users', description=' Requires 2 args minimum; The command can Kick multiple \
     users at once. Usage is as follows /su ban @user1, @user2[optional], @user3[and so on], [reason for kick], \
@@ -73,7 +74,7 @@ async def kick(ctx, members: commands.Greedy[discord.Member],
         await member.kick(delete_message_days=delete_days, reason=reason)
     else:
         await ctx.send("You don't have permission to use this command.")
-      
+
 
 # Roles
 @bot.group(name='roles', brief='This is for role commands', description='Individuals may assign any of the listed \
@@ -82,8 +83,8 @@ async def kick(ctx, members: commands.Greedy[discord.Member],
 async def roles(ctx):
     if ctx.invoked_subcommand is None:
         await ctx.send('Invalid role command passed. Please try again...')
-    
-    
+
+
 @roles.error  # Error handling
 async def clear_error(ctx, error):
     if isinstance(error, commands.CheckFailure):  # role_channel
@@ -94,7 +95,7 @@ async def clear_error(ctx, error):
 async def add_py(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)  # replace id with the id of the discord role being assigned
+    role = get(guild.roles, id=572081414007423016)  # replace id with the id of the discord role being assigned
     if role in member.roles:
         await ctx.send('Silly human, you already have that role...')
     else:
@@ -110,7 +111,7 @@ async def add_py(ctx):
 async def remove_py(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)  # replace id with the id of the discord role being removed
+    role = get(guild.roles, id=572081414007423016)  # replace id with the id of the discord role being removed
     if role not in member.roles:
         await ctx.send('Silly human, you don\'t have that role...')
     else:
@@ -126,7 +127,7 @@ async def remove_py(ctx):
 async def add_c_plus(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)  # replace id with the id of the discord role being assigned
+    role = get(guild.roles, id=572081460740227072)  # replace id with the id of the discord role being assigned
     if role in member.roles:
         await ctx.send('Silly human, you already have that role...')
     else:
@@ -142,7 +143,7 @@ async def add_c_plus(ctx):
 async def remove_c_plus(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)  # replace id with the id of the discord role being removed
+    role = get(guild.roles, id=572081460740227072)  # replace id with the id of the discord role being removed
     if role not in member.roles:
         await ctx.send('Silly human, you don\'t have that role...')
     else:
@@ -158,7 +159,7 @@ async def remove_c_plus(ctx):
 async def add_java(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)  # replace id with the id of the discord role being assigned
+    role = get(guild.roles, id=572081491291668481)  # replace id with the id of the discord role being assigned
     if role in member.roles:
         await ctx.send('Silly human, you already have that role...')
     else:
@@ -174,7 +175,7 @@ async def add_java(ctx):
 async def remove_java(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)  # replace id with the id of the discord role being removed
+    role = get(guild.roles, id=572081491291668481)  # replace id with the id of the discord role being removed
     if role not in member.roles:
         await ctx.send('Silly human, you don\'t have that role...')
     else:
@@ -190,7 +191,7 @@ async def remove_java(ctx):
 async def add_web(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)  # replace id with the id of the discord role being assigned
+    role = get(guild.roles, id=572081500875653150)  # replace id with the id of the discord role being assigned
     if role in member.roles:
         await ctx.send('Silly human, you already have that role...')
     else:
@@ -206,7 +207,7 @@ async def add_web(ctx):
 async def remove_web(ctx):
     member = ctx.message.author
     guild = ctx.message.guild
-    role = get(guild.roles, id=id)  # replace id with the id of the discord role being removed
+    role = get(guild.roles, id=572081500875653150)  # replace id with the id of the discord role being removed
     if role not in member.roles:
         await ctx.send('Silly human, you don\'t have that role...')
     else:
