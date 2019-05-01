@@ -113,5 +113,31 @@ async def change_role(ctx, lang):
             print('removed')
         elif ctx.invoked_command is None:
             await ctx.send('Invalid role command passed. Please try again...')
+          
+          
+### Adding and retrieving stored resources
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+    if message.content == "!stop":
+        await bot.logout()
+    elif message.content.startswith('/pythonresources'):
+        await message.channel.send('CURRENTLY STORED PYTHON RESOURCES ARE:')
+        for item in pyresources:
+            await message.channel.send(item)
+    elif message.content.startswith('/addpythonresource'):
+        resource = message.content.replace('/addpythonresource', '')
+        pyresources.append(resource)
+        await message.channel.send(f"Thankyou, '{resource}' has been added to Python resources :)")
+    elif message.content.startswith('/jsresources'):
+        await message.channel.send('CURRENTLY STORED JS RESOURCES ARE:')
+        for item in jsresources:
+            await message.channel.send(item)
+    elif message.content.startswith('/addjsresource'):
+        resource = message.content.replace('/addjsresource', '')
+        jsresources.append(resource)
+        await message.channel.send(f"Thankyou, '{resource}' has been added to Javascript resources :)")          
 
 bot.run(TOKEN)
