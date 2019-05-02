@@ -12,6 +12,10 @@ class MembersCog(commands.Cog, name="Member Commands"):
         """Says when a member joined."""
         await ctx.send(f'{member.display_name} joined on {member.joined_at}')
 
+    @commands.command(name='coolbot')
+    async def cool_bot(self, ctx):
+        """Is the bot cool?"""
+        await ctx.send('This bot is cool. :)')
 
     @commands.command(name='top_role', aliases=['toprole'])
     @commands.guild_only()
@@ -45,6 +49,7 @@ class MembersCog(commands.Cog, name="Member Commands"):
         await ctx.send(content=None, embed=embed)
         # Thanks to Gio for the Command.
 
-# The setup fucntion below is neccesarry for all cogs.
+# The setup fucntion below is neccesarry. Remember we give bot.add_cog() the name of the class in this case MembersCog.
+# When we load the cog, we use the name of the file.
 def setup(bot):
     bot.add_cog(MembersCog(bot))
