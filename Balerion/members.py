@@ -12,10 +12,6 @@ class MembersCog(commands.Cog, name="Member Commands"):
         """Says when a member joined."""
         await ctx.send(f'{member.display_name} joined on {member.joined_at}')
 
-    @commands.command(name='coolbot')
-    async def cool_bot(self, ctx):
-        """Is the bot cool?"""
-        await ctx.send('This bot is cool. :)')
 
     @commands.command(name='top_role', aliases=['toprole'])
     @commands.guild_only()
