@@ -16,9 +16,10 @@ class ResourceCog(commands.Cog, name='Resource Commands'):
         self.pydb.commit()
         self.jsdb.commit()
 
-    @commands.command(name='addpython', brief='adds a Python resource to a resource list')
-    async def add_py_resources(self, ctx, id):
-        try:   # if you wanna get a b it fancy with error handling
+    @commands.command(name='addpython', brief='Adds a Python resource to list', descruption='Adds a Python resource \
+    to a resource list.')
+    async def add_py_resources(self, ctx, *, id):
+        try:   # if you wanna get a bit fancy with error handling
             resource = ctx.message.content.replace('/addpython', '')
             self.pycursor.execute("INSERT INTO python VALUES (NULL, ?)", (resource,))
             self.pydb.commit()
@@ -27,8 +28,8 @@ class ResourceCog(commands.Cog, name='Resource Commands'):
         except Exception as e:
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
 
-    @commands.command(name='pythonresources', brief='send a list of currently stored Python resources')
-    async def get_py_resources(self, ctx):
+    @commands.command(name='pythonresources', brief='Send a list of currently stored Python resources')
+    async def get_py_resources(self, *, ctx):
         try:
             await ctx.message.author.send('CURRENTLY STORED PYTHON RESOURCES ARE:')
             self.pycursor.execute("SELECT * FROM python")
@@ -38,8 +39,9 @@ class ResourceCog(commands.Cog, name='Resource Commands'):
         except Exception as e:
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
 
-    @commands.command(name='addjs', brief='add a Javascript resource to a resource list')
-    async def add_js_resources(self, ctx, id):
+    @commands.command(name='addjs', brief='add a Javascript resource to a resource list', descruption='Adds a Java resource \
+    to a resource list.')
+    async def add_js_resources(self, ctx, *, id):
         try:
             resource = ctx.message.content.replace('/addjs', '')
             self.jscursor.execute("INSERT INTO js VALUES (NULL, ?)", (resource,))
@@ -49,7 +51,7 @@ class ResourceCog(commands.Cog, name='Resource Commands'):
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
 
     @commands.command(name='jsresources', brief='sends a list of currently stored Javascript resources')
-    async def get_js_resources(self, ctx):
+    async def get_js_resources(self, *, ctx):
         try:
             await ctx.message.author.send('CURRENTLY STORED JAVASCRIPT RESOURCES ARE:')
             self.jscursor.execute("SELECT * FROM js")
@@ -61,7 +63,7 @@ class ResourceCog(commands.Cog, name='Resource Commands'):
 
     @commands.command(name='deletepy', brief='removes a resource from stored Python resources')
     @commands.has_permissions(administrator=True)
-    async def del_python(self, ctx):
+    async def del_python(self, *, ctx):
         try:
             id_str = ctx.message.content.replace('/deletepy', '')
             self.pycursor.execute("DELETE FROM python WHERE id=?", (int(id_str),))
@@ -71,7 +73,7 @@ class ResourceCog(commands.Cog, name='Resource Commands'):
 
     @commands.command(name='deletejs', brief='removes a resource from stored Javascript resources')
     @commands.has_permissions(administrator=True)
-    async def del_js(self, ctx):
+    async def del_js(self, *, ctx):
         try:
             id_str = ctx.message.content.replace('/deletejs', '')
             self.jscursor.execute("DELETE FROM js WHERE id=?", (int(id_str),))
