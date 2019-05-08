@@ -2,6 +2,7 @@ from discord.ext import commands
 import sqlite3
 
 
+
 roles_list = ['python', 'javascript', 'c', 'webdev', 'java']
 
 
@@ -68,6 +69,7 @@ class ResourceCog(commands.Cog, name='Resource Commands'):
             self.conn.commit()
             await ctx.message.author.send(f'Resource #{id} deleted')
         except Exception as e:
+
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
 
 

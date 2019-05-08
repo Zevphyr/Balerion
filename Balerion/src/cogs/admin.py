@@ -3,18 +3,18 @@ import typing
 from discord.ext import commands
 
 
-class AdminCog(commands.Cog):
+class AdminCog(commands.Cog, name='Admin Commands'):
     def __init__(self, bot):
         self.bot = bot
 
 
 # administrative group
-    @commands.group(name='su', brief='This is for administrative commands', description='These commands are unable to \
+    @commands.group(name='su', case_insensitive=True, brief='This is for administrative commands', description='These commands are unable to \
                                                 to be used if your role does not have administrator privileges')
     @commands.has_permissions(administrator=True)  # Restricts command to administrators
     async def su(self, ctx):
         if ctx.invoked_subcommand is None:
-            await ctx.send('Invalid su command passed...')
+            await ctx.send('Invalid command passed...')
 
 # Purge
     @su.command(name='purge', brief='Purges old messages', description='purges up to 100 messaged made within the \
