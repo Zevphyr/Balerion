@@ -29,10 +29,12 @@ bot = commands.Bot(command_prefix=get_prefix, description=description)
 
 # Below cogs represents our folder our cogs are in. Following is the file name. So 'meme.py' in cogs, would be cogs.meme
 # Think of it like a dot path import
-initial_extensions = ['cogs.owner',
-                      'cogs.role',
-                      'cogs.admin',
-                      'cogs.members']
+initial_extensions = ['src.cogs.owner',
+                      'src.cogs.role',
+                      'src.cogs.admin',
+                      'src.cogs.members',
+                      'src.cogs.resources',
+                      'src.cogs.reddit']
 
 # login
 @bot.event
@@ -42,6 +44,10 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name='The Black Dread'))
 
 
+# Removes the default help command
+bot.remove_command('help')
+    
+    
 # If its hidden it won't turn up in the help command.
 @bot.group(name="Cogs", hidden=True, brief='Loads and unloads a module manually.')
 @commands.is_owner()
