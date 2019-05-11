@@ -44,51 +44,6 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name='The Black Dread'))
     # This changes the status of the bot to: "Playing The Black Dread"  
 
-# If its hidden it won't turn up in the help command.
-@bot.group(name="Cogs", hidden=True, brief='Loads and unloads a module manually.')
-@commands.is_owner()
-async def modules(ctx):
-    if ctx.invoked_subcommand is None:
-        await ctx.send.author('That\'s not quite right')
-
-
-# Load Cogs
-@modules.command(name='load', hidden=True, brief='Command which Loads a module.')
-async def load(extension, *, ctx):
-    try:
-        bot.load_extension(extension)
-    except Exception as e:
-        await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
-    else:
-        await ctx.send('**`SUCCESS`**')
-
-
-
-# Unload Cogs
-@modules.command(name='unload', hidden=True, brief='Command which Unloads a module.')
-async def unload(extension, *, ctx):
-        """Command which Unloads a Module.
-        Remember to use dot path. e.g: cogs.owner"""
-
-        try:
-            bot.unload_extension(extension)
-        except Exception as e:
-            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
-        else:
-            await ctx.send('**`SUCCESS`**')
-
-
-# Reload Cogs
-@modules.command(name='reload', hidden=True, brief='Command which Reloads a Module.')
-async def cog_reload(extension, *, ctx):
-    try:
-        bot.unload_extension(extension)
-        bot.load_extension(extension)
-    except Exception as e:
-            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
-    else:
-        await ctx.send('**`SUCCESS`**')
-
 
 #  Here we load our extensions(cogs) listed above in [initial_extensions]. It prints out a traceback if for some reason it fails.
 if __name__ == '__main__':
