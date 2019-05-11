@@ -2,8 +2,7 @@ from discord.ext import commands
 import sqlite3
 
 
-
-roles_list = ['python', 'javascript', 'c', 'webdev', 'java']
+roles_list = ['python', 'javascript', 'c-family', 'web', 'java', 'query']
 
 
 class ResourceCog(commands.Cog, name='Resource Commands'):
