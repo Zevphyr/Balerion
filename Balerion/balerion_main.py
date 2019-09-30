@@ -33,7 +33,8 @@ initial_extensions = ['src.cogs.owner',
                       'src.cogs.role',
                       'src.cogs.admin',
                       'src.cogs.members',
-                      'src.cogs.resources']
+                      'src.cogs.resources',
+                      'src.cogs.music']
 
 # login
 @bot.event
