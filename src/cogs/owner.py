@@ -23,4 +23,4 @@ class OwnerCog(commands.Cog, name="Info Commands"):
 
 
 def setup(bot):
-   bot.add_cog(OwnerCog(bot))
+    bot.add_cog(OwnerCog(bot))
