@@ -1,0 +1,7 @@
+
+discord.py[voice]>=1.2.3
+praw>=6.4.0
+prawcore>=1.0.1
+typing>=3.3.6
+
+

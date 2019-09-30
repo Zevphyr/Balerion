@@ -1,0 +1,14 @@
+# Contributions to the urllib3 project
+
+## Creator & Maintainer
+
+* Zevpyr <kesantiago.249@gmail.com>
+
+
+## Contributors
+
+* kirkkenney <https://github.com/kirkkenney>
+  *Added resources.py and sqlite3 for persistent resource storage
+
+* [Your name or handle] <[email or website]>
+  * [Brief summary of your changes]

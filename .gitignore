@@ -1,0 +1,7 @@
+
+*.iml
+*.xml
+*.iml
+*.pyc
+Balerion/balerion_main.py
+praw.ini
