@@ -10,3 +10,4 @@ praw.ini
 Balerion/Config/settings.json
 *.iml
 *.xml
+.idea/workspace.xml
