@@ -73,4 +73,5 @@ class ResourceCog(commands.Cog, name='Resource Commands'):
 
 
 def setup(bot):
-    bot.add_cog(ResourceCog(bot))
+  bot.add_cog(ResourceCog(bot))
+  
