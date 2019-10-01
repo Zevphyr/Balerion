@@ -1,6 +1,7 @@
 import sys
 import logging
 
+
 ascii = """
 #"""""""'M           dP                   oo                   
 ##  mmmm. `M          88                                        
@@ -31,10 +32,11 @@ def bye_bye(msg="Press enter to continue . . .", code=1):
 
 def run():
     try:
-        m = Balerion()
+        from Balerion.Balerion_main import Balerion
+        b = Balerion()
         print(ascii)
         print("Connecting...\n")
-        m.run()
+        b.run()
     except Exception as e:
         log.warning(f"Closing bot : {e}")
         bye_bye()
