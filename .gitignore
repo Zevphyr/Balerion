@@ -5,3 +5,8 @@
 *.pyc
 Balerion/balerion_main.py
 praw.ini
+*.iml
+*.xml
+Balerion/Config/settings.json
+*.iml
+*.xml

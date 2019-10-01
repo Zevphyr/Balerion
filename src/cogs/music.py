@@ -82,14 +82,6 @@ currently in", case_insensitive=True)
         player = await voice_channel.create_ytdl_player(url)
         player.start()
 
-    @commands.command(name="check", case_insensitive=True)
-    @commands.cooldown(4, 30, commands.BucketType.user)  # Restricts spam
-    async def check(self, ctx):
-        if VoiceClient.is_connected(ctx):
-            await ctx.send("1")
-        else:
-            await ctx.send("0")
-
     @commands.command(case_insensitive=True)
     @commands.cooldown(4, 30, commands.BucketType.user)  # Restricts spam
     async def stream(self, ctx, *, url):
@@ -101,6 +93,17 @@ currently in", case_insensitive=True)
 
         await ctx.send('Now playing: {}'.format(player.title))
 
+    # @play.before_invoke
+    @stream.before_invoke
+    async def ensure_voice(self, ctx):
+        if ctx.voice_client is None:
+            if ctx.author.voice:
+                await ctx.author.voice.channel.connect()
+            else:
+                await ctx.send("You are not connected to a voice channel.")
+                raise commands.CommandError("Author not connected to a voice channel.")
+        elif ctx.voice_client.is_playing():
+            ctx.voice_client.stop()
 
 def setup(bot):
     bot.add_cog(MusicCog(bot))
