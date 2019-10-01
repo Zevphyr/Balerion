@@ -32,7 +32,7 @@ def bye_bye(msg="Press enter to continue . . .", code=1):
 
 def run():
     try:
-        from Balerion.Balerion_main import Balerion
+        from Balerion.balerion_main import Balerion
         b = Balerion()
         print(ascii)
         print("Connecting...\n")

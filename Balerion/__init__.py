@@ -1,1 +1,1 @@
-from Balerion.Balerion_main import Balerion
+from Balerion.balerion_main import Balerion
