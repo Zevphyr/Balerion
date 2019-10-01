@@ -1,5 +1,6 @@
 import discord
 import asyncio
+import ffmpeg
 import youtube_dl
 from discord.ext import commands
 from discord.voice_client import VoiceClient
@@ -82,10 +83,25 @@ currently in", case_insensitive=True)
         player = await voice_channel.create_ytdl_player(url)
         player.start()
 
-    @commands.command(case_insensitive=True)
+    @commands.command(brief="Changes the player's volume", case_insensitive=True)
+    async def volume(self, ctx, volume: int):
+        if ctx.voice_client is None:
+            return await ctx.send("Not connected to a voice channel.")
+
+        ctx.voice_client.source.volume = volume / 100
+        await ctx.send("Changed volume to {}%".format(volume))
+
+    @commands.command(brief="Stops everything", case_insensitive=True)
+    @commands.cooldown(4, 30, commands.BucketType.user)
+    async def stop(self, ctx):
+        """Stops the currently playing song and disconnects the bot from voice"""
+
+        await ctx.voice_client.disconnect()
+
+    @commands.command(case_insensitive=True, brief="Streams a song")
     @commands.cooldown(4, 30, commands.BucketType.user)  # Restricts spam
     async def stream(self, ctx, *, url):
-        """Streams from a given url"""
+        """Streams from a given url without pre-downloading a cache"""
 
         async with ctx.typing():
             player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
@@ -104,6 +120,7 @@ currently in", case_insensitive=True)
                 raise commands.CommandError("Author not connected to a voice channel.")
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()
+
 
 def setup(bot):
     bot.add_cog(MusicCog(bot))

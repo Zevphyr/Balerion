@@ -4,4 +4,5 @@ praw>=6.4.0
 prawcore>=1.0.1
 typing>=3.3.6
 aiohttp>=3.6.1
+youtube_dl
 
