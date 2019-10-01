@@ -35,7 +35,6 @@ description = '''Balerion is a bot made for administrative aid in small discord 
 
 bot = commands.Bot(command_prefix=get_prefix, description=description)
 
-
 class Balerion(commands.AutoShardedBot):
     def __init__(self):
 
