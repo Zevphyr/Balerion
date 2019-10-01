@@ -35,4 +35,5 @@ where Cog is the cog class.
  """
 
 def setup(bot):
-    bot.add_cog(Test(bot))
+  bot.add_cog(Test(bot))
+  
