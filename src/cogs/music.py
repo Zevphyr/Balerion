@@ -66,7 +66,7 @@ currently in", case_insensitive=True)
         await ctx.send(content=None, embed=embed)
 
     @commands.command(name="leave", brief="Disconnects from a voice channel", case_insensitive=True)
-    @commands.cooldown(4, 30, commands.BucketType.user)  # Restricts spam
+    @commands.cooldown(4, 30, commands.BucketType.user)
     async def disconnect_from_vc(self, ctx):
         voice_client = ctx.voice_client
         channel = ctx.message.author.voice.channel
@@ -86,10 +86,14 @@ currently in", case_insensitive=True)
     @commands.command(brief="Changes the player's volume", case_insensitive=True)
     async def volume(self, ctx, volume: int):
         if ctx.voice_client is None:
-            return await ctx.send("Not connected to a voice channel.")
+            embed = discord.Embed(description="Not connected to a voice channel.",
+                                  color=discord.Color.dark_red())
+            return await ctx.send(content=None, embed=embed)
 
         ctx.voice_client.source.volume = volume / 100
-        await ctx.send("Changed volume to {}%".format(volume))
+        embed = discord.Embed(title="Volume", description="Changed volume to {}%".format(volume),
+                              color=discord.Color.dark_red())
+        await ctx.send(content=None, embed=embed)
 
     @commands.command(brief="Stops everything", case_insensitive=True)
     @commands.cooldown(4, 30, commands.BucketType.user)
@@ -99,7 +103,7 @@ currently in", case_insensitive=True)
         await ctx.voice_client.disconnect()
 
     @commands.command(case_insensitive=True, brief="Streams a song")
-    @commands.cooldown(4, 30, commands.BucketType.user)  # Restricts spam
+    @commands.cooldown(4, 30, commands.BucketType.user)
     async def stream(self, ctx, *, url):
         """Streams from a given url without pre-downloading a cache"""
 
@@ -107,40 +111,49 @@ currently in", case_insensitive=True)
             player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
             ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
 
-        await ctx.send('Now playing: {}'.format(player.title))
+        embed = discord.Embed(title="Streaming", description="Now playing: {}".format(player.title),
+                              color=discord.Color.dark_red())
 
-    # @play.before_invoke
+        await ctx.send(content=None, embed=embed)
+
+    @play_music.before_invoke
     @stream.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
             if ctx.author.voice:
                 await ctx.author.voice.channel.connect()
             else:
-                await ctx.send("You are not connected to a voice channel.")
+                embed = discord.Embed(description="You are not connected to a voice channel.",
+                                      color=discord.Color.dark_red())
+                await ctx.send(content=None, embed=embed)
                 raise commands.CommandError("Author not connected to a voice channel.")
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()
 
-    ## Issue #25 - Add pause/resume commands.     
+    # Issue #25 - Add pause/resume commands.
     @commands.command(name="pause", brief="Pauses music", case_insensitive=True) # Gives command description
-    @commands.cooldown(4, 30, commands.BucketType.user) # Restricts Spam
+    @commands.cooldown(4, 30, commands.BucketType.user)
     async def pause(self, ctx):
         """Pauses music"""
 
         if ctx.voice_client.is_playing():
             ctx.voice_client.pause()
         else:
-            await ctx.send("Nothing to pause.")
+            embed = discord.Embed(title="Pause", description="Nothing to pause.",
+                                  color=discord.Color.dark_red())
+            await ctx.send(content=None, embed=embed)
     
     @commands.command(name="resume", brief="Resume music stream", case_insensitive=True) # Gives command description
-    @commands.cooldown(4, 30, commands.BucketType.user) # Restricts Spam
+    @commands.cooldown(4, 30, commands.BucketType.user)
     async def resume(self, ctx):
         """Resumes Music"""
 
         if ctx.voice_client.is_paused():
             ctx.voice_client.resume()
         else:
-            return await ctx.send("Nothing to resume.")
+            embed = discord.Embed(title="Resume", description="Nothing to resume.",
+                                  color=discord.Color.dark_red())
+            await ctx.send(content=None, embed=embed)
 
 def setup(bot):
     bot.add_cog(MusicCog(bot))
