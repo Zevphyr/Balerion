@@ -121,6 +121,26 @@ currently in", case_insensitive=True)
         elif ctx.voice_client.is_playing():
             ctx.voice_client.stop()
 
+    ## Issue #25 - Add pause/resume commands.     
+    @commands.command(name="pause", brief="Pauses music", case_insensitive=True) # Gives command description
+    @commands.cooldown(4, 30, commands.BucketType.user) # Restricts Spam
+    async def pause(self, ctx):
+        """Pauses music"""
+
+        if ctx.voice_client.is_playing():
+            ctx.voice_client.pause()
+        else:
+            await ctx.send("Nothing to pause.")
+    
+    @commands.command(name="resume", brief="Resume music stream", case_insensitive=True) # Gives command description
+    @commands.cooldown(4, 30, commands.BucketType.user) # Restricts Spam
+    async def resume(self, ctx):
+        """Resumes Music"""
+
+        if ctx.voice_client.is_paused():
+            ctx.voice_client.resume()
+        else:
+            return await ctx.send("Nothing to resume.")
 
 def setup(bot):
     bot.add_cog(MusicCog(bot))
