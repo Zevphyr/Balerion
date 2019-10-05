@@ -55,7 +55,8 @@ class Balerion(commands.AutoShardedBot):
                               'Balerion.src.cogs.admin',
                               'Balerion.src.cogs.members',
                               'Balerion.src.cogs.resources',
-                              'Balerion.src.cogs.music']
+                              'Balerion.src.cogs.music',
+                              'Balerion.src.cogs.listeners']
 
         #  Here we load our extensions(cogs) listed above in [initial_extensions].
 
