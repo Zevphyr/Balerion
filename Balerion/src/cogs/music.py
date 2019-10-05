@@ -20,6 +20,19 @@ ytdl_format_options = {
     'source_address': '0.0.0.0' # bind to ipv4 since ipv6 addresses cause issues sometimes
 }
 
+"""
+"ffmpeg/avconv not found in your PATH environment variable" refer issue #1149 in Rapptz/Discord.py 
+
+WINDOWS: YOU MUST ADD THE ABSOLUTE PATH OF THE FFMPEG EXECUTABLE IN ./src/ffmpeg-4.2.1-win64-static/bin 
+TO YOUR SYS PATH EVN
+
+*NIX: USE YOUR NATIVE PACKAGE MANAGER (APT; YUM; PACMAN; DNF) INSTALL THE PACKAGE, 'ffmpeg' AND AND IT TO YOUR SHELL ENV
+BASH COMPATIBLE SHELL EX: export PATH=/home/myuser/ffmpeg/bin:$PATH 
+
+SOURCE:
+https://www.ffmpeg.org/download.html 
+"""
+
 ffmpeg_options = {
     'options': '-vn'
 }
