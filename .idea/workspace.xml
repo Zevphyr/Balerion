@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da016bd3-e0c3-40c8-86ca-ef56be419225" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/bot_example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/client_example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/balerion_main.spec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/ExampleCog.py" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/cog_example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/main_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/main_file_example.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,12 +29,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="5" />
-    <option name="y" value="10" />
-    <option name="width" value="1745" />
-    <option name="height" value="895" />
   </component>
   <component name="ProjectId" id="1Rn6PHHOZhlCeGlcW8qJKq19vVT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
