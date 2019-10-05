@@ -50,12 +50,12 @@ class Balerion(commands.AutoShardedBot):
 
                 Think of it like a dot path import"""
 
-        initial_extensions = ['src.cogs.owner',
-                              'src.cogs.role',
-                              'src.cogs.admin',
-                              'src.cogs.members',
-                              'src.cogs.resources',
-                              'src.cogs.music']
+        initial_extensions = ['Balerion.src.cogs.owner',
+                              'Balerion.src.cogs.role',
+                              'Balerion.src.cogs.admin',
+                              'Balerion.src.cogs.members',
+                              'Balerion.src.cogs.resources',
+                              'Balerion.src.cogs.music']
 
         #  Here we load our extensions(cogs) listed above in [initial_extensions].
 
