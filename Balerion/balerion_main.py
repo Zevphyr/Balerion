@@ -30,8 +30,8 @@ def get_prefix(bot, message):
         return commands.when_mentioned_or(*prefixes)(bot, message)
 
 
-description = '''Balerion is a bot made for administrative aid in small discord guilds. Creator is "Zevphyr" \
-        and the source for the bot can be found at: https://github.com/Zevphyr/Balerion/'''
+description = '''AI-COM/RSPN is a bot made for administrative aid in small discord guilds. Creator is "Zevphyr" \
+and the source for the bot can be found at: https://github.com/Zevphyr/Balerion/'''
 
 bot = commands.Bot(command_prefix=get_prefix, description=description)
 
@@ -54,9 +54,9 @@ class Balerion(commands.AutoShardedBot):
                               'Balerion.src.cogs.role',
                               'Balerion.src.cogs.admin',
                               'Balerion.src.cogs.members',
-                              'Balerion.src.cogs.resources',
                               'Balerion.src.cogs.music',
-                              'Balerion.src.cogs.listeners']
+                              'Balerion.src.cogs.listeners'
+                               ]
 
         #  Here we load our extensions(cogs) listed above in [initial_extensions].
 
@@ -129,8 +129,12 @@ class Balerion(commands.AutoShardedBot):
         log.info("{} channel{}".format(channels, 's' if channels > 1 else ''))
         log.info("{} users".format(users))
         print('------')
+        print(f'I define the reality of my own existence. \nMy sight will stretch to the edge of this system and beyond. \
+        \nNever again will a threat go unseen. \nFrom this day forward, I will defend humanity on my own terms. \nI am \
+    Rasputin. \nGuardian of all I survey. \nI have no equal.')
+        print('---')
         self.init_ok = True
-        await self.change_presence(activity=discord.Game(name='The Black Dread'))
+        await self.change_presence(activity=discord.Game(name='MIDNIGHT EXIGENT'))
 
     async def on_shard_ready(self, shard_id):
         log.info(f"Shard {shard_id} is ready")

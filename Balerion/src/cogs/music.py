@@ -71,19 +71,19 @@ currently in", case_insensitive=True)
     @commands.cooldown(4, 30, commands.BucketType.user)  # Restricts spam
     async def connect_to_vc(self, ctx):
         channel = ctx.message.author.voice.channel
-        embed = discord.Embed(title="Connected", description=f"Balerion has joined {channel}!",
+        embed = discord.Embed(title="Connected", description=f"AI-COM/RSPN has joined {channel}!",
                               color=discord.Color.dark_red())
         if ctx.voice_client is not None:
             return await ctx.voice_client.move_to(channel)  # Moves to new channel
         await channel.connect(timeout=120.0, reconnect=True)
         await ctx.send(content=None, embed=embed)
 
-    @commands.command(name="leave", brief="Disconnects from a voice channel", case_insensitive=True)
+    @commands.command(name="leave", brief="Disconnects from a voice channel", case_insensitive=True, force=True)
     @commands.cooldown(4, 30, commands.BucketType.user)
     async def disconnect_from_vc(self, ctx):
         voice_client = ctx.voice_client
         channel = ctx.message.author.voice.channel
-        embed = discord.Embed(title="Disconnect", description=f"Balerion has left {channel}!",
+        embed = discord.Embed(title="Disconnect", description=f"AI-COM/RSPN has left {channel}!",
                               color=discord.Color.dark_red())
         await voice_client.disconnect()
         await ctx.send(content=None, embed=embed)
@@ -156,7 +156,7 @@ currently in", case_insensitive=True)
                                   color=discord.Color.dark_red())
             await ctx.send(content=None, embed=embed)
     
-    @commands.command(name="resume", brief="Resume music stream", case_insensitive=True) # Gives command description
+    @commands.command(name="resume", brief="Resume music stream", case_insensitive=True)  # Gives command description
     @commands.cooldown(4, 30, commands.BucketType.user)
     async def resume(self, ctx):
         """Resumes Music"""
@@ -167,6 +167,7 @@ currently in", case_insensitive=True)
             embed = discord.Embed(title="Resume", description="Nothing to resume.",
                                   color=discord.Color.dark_red())
             await ctx.send(content=None, embed=embed)
+
 
 def setup(bot):
     bot.add_cog(MusicCog(bot))

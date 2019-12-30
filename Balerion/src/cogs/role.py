@@ -7,15 +7,14 @@ class RoleCog(commands.Cog):
         self.bot = bot
 
     async def cog_check(self, ctx):
-        return ctx.message.channel.name == 'assign-yourself-ranks'
+        return ctx.message.channel.name == 'bot-spam'
 
 
 # Roles
     @commands.command(name='role', case_insensitive=True, brief='Assigns or removes roles')
     async def change_role(self, ctx, lang):
         lang = lang.lower()
-        roles_dict = {'python': 572081414007423016, 'c-family': 572081460740227072, 'java': 572081491291668481,
-                      'web': 572081500875653150, 'query': 572645146886144052}
+        roles_dict = {'infantry': 660660202793861143, 'tanker': 660535588683907093, 'logi': 660660023386439722}
         if lang not in roles_dict:
             await ctx.send('Invalid role command passed or called in the wrong channel. Please try again...')
             print('fail')

@@ -9,8 +9,8 @@ class AdminCog(commands.Cog, name='Admin Commands'):
 
 
 # administrative group
-    @commands.group(name='su', case_insensitive=True, brief='This is for administrative commands', description='These commands are unable to \
-                                                to be used if your role does not have administrator privileges')
+    @commands.group(name='su', case_insensitive=True, brief='This is for administrative commands', description='These \
+    commands are unable to be used if your role does not have administrator privileges')
     @commands.has_permissions(administrator=True)  # Restricts command to administrators
     async def su(self, ctx):
         if ctx.invoked_subcommand is None:

@@ -129,3 +129,6 @@ dmypy.json
 praw.ini
 Balerion/Config/settings.json
 
+*.pyc
+*.xml
+*.xml
